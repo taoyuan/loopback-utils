@@ -650,6 +650,10 @@ error-ex@^1.2.0:
   dependencies:
     is-arrayish "^0.2.1"
 
+errs:
+  version "0.3.2"
+  resolved "http://registry.npm.taobao.org/errs/download/errs-0.3.2.tgz#798099b2dbd37ca2bc749e538a7c1307d0b50499"
+
 es-abstract@^1.7.0:
   version "1.7.0"
   resolved "http://registry.npm.taobao.org/es-abstract/download/es-abstract-1.7.0.tgz#dfade774e01bfcd97f96180298c449c8623fb94c"

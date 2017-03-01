@@ -1,3 +1,4 @@
 'use strict';
 
-module.exports = require('./utils');
+module.exports = exports = require('./utils');
+exports.errors = require('./errors');
