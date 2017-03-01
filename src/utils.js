@@ -1,5 +1,7 @@
 const assert = require('assert');
 const Promise = require('bluebird');
+const _ = require('lodash');
+const minimatch = require('minimatch');
 
 let debug = noop;
 
@@ -8,6 +10,21 @@ try {
 } catch (e) {
 	// no-op
 }
+
+const REL_METHODS = [
+	'findById',
+	'destroyById',
+	'updateById',
+	'exists',
+	'link',
+	'get',
+	'create',
+	'update',
+	'destroy',
+	'unlink',
+	'count',
+	'delete'
+];
 
 function noop() {
 	// no-op
@@ -25,6 +42,21 @@ function createPromiseCallback() {
 	return cb;
 }
 
+function filter(sources, rules) {
+	rules = Array.isArray(rules) ? rules : [rules];
+	let remained = [...sources];
+
+	_.map(rules, (approve, pattern) => {
+		const methods = _.filter(sources, minimatch.filter(pattern));
+		if (approve) {
+			remained = _.union(remained, methods);
+		} else {
+			remained = _.without(remained, ...methods);
+		}
+	});
+	return remained;
+}
+
 /**
  * Disable remote methods
  * @param {Function} Model The model to process.
@@ -34,6 +66,18 @@ function disableRemoteMethods(Model, methods) {
 	assert(typeof Model === 'function', 'Model must be a class (function)');
 	methods = Array.isArray(methods) ? methods : [methods];
 	methods.map(method => Model.disableRemoteMethodByName(method));
+}
+
+/**
+ *
+ * @param {Function} Model The model to process.
+ * @param {String|Array} relations The relations to alter.
+ * @param {Object} rules
+ */
+function updateRemoteRelationMethods(Model, relations, rules) {
+	relations = Array.isArray(relations) ? relations : [relations];
+	const disables = _.without(REL_METHODS, ...filter(REL_METHODS, rules));
+	relations.forEach(rel => disableRemoteMethods(Model, _.map(disables, m => `prototype.__${m}__${rel}`)));
 }
 
 /**
@@ -164,6 +208,7 @@ module.exports = {
 	noop,
 	createPromiseCallback,
 	disableRemoteMethods,
+	updateRemoteRelationMethods,
 	hideAll,
 	hideRelation,
 	readOnly,
