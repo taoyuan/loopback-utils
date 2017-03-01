@@ -36,7 +36,7 @@ function createPromiseCallback() {
 function disableRemoteMethods(Model, methods, isStatic) {
 	assert(typeof Model === 'function', 'Model must be a class (function)');
 	methods = Array.isArray(methods) ? methods : [methods];
-	methods.map(method => Model.disableRemoteMethod(method, isStatic));
+	methods.map(method => Model.disableRemoteMethodByName(method, isStatic));
 }
 
 /**
