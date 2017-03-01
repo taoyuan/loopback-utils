@@ -54,7 +54,9 @@ function hideAll(Model) {
 		'createChangeStream',
 		'count',
 		'findOne',
-		'exists'
+		'exists',
+		'replaceOrCreate',
+		'upsertWithWhere',
 	]);
 	disableRemoteMethods(Model, 'updateAttributes', false);
 }
@@ -72,6 +74,8 @@ function readOnly(Model) {
 		'count',
 		'findOne',
 		'exists',
+		'replaceOrCreate',
+		'upsertWithWhere',
 	]);
 	disableRemoteMethods(Model, 'updateAttributes', false);
 }
@@ -87,6 +91,8 @@ function simpleCrud(Model) {
 		'count',
 		'findOne',
 		'exists',
+		'replaceOrCreate',
+		'upsertWithWhere',
 	]);
 }
 /**
