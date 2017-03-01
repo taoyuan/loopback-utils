@@ -29,14 +29,11 @@ function createPromiseCallback() {
  * Disable remote methods
  * @param {Function} Model The model to process.
  * @param {String|Array} methods The methods to disable
- * @param {Boolean} [isStatic] Is the method static (eg. `MyModel.myMethod`)? Pass
- * `false` if the method defined on the prototype (eg.
- * `MyModel.prototype.myMethod`).
  */
-function disableRemoteMethods(Model, methods, isStatic) {
+function disableRemoteMethods(Model, methods) {
 	assert(typeof Model === 'function', 'Model must be a class (function)');
 	methods = Array.isArray(methods) ? methods : [methods];
-	methods.map(method => Model.disableRemoteMethodByName(method, isStatic));
+	methods.map(method => Model.disableRemoteMethodByName(method));
 }
 
 /**
@@ -58,7 +55,7 @@ function hideAll(Model) {
 		'replaceOrCreate',
 		'upsertWithWhere',
 	]);
-	disableRemoteMethods(Model, 'updateAttributes', false);
+	disableRemoteMethods(Model, 'prototype.updateAttributes');
 }
 /**
  * Disables all write methods on a model, keeping only the GET.
@@ -77,7 +74,7 @@ function readOnly(Model) {
 		'replaceOrCreate',
 		'upsertWithWhere',
 	]);
-	disableRemoteMethods(Model, 'updateAttributes', false);
+	disableRemoteMethods(Model, 'prototype.updateAttributes');
 }
 /**
  * Keeps only the simple GET/POST/PUT/DELETE methods.
@@ -102,16 +99,16 @@ function simpleCrud(Model) {
  */
 function readOnlyRelation(Model, relation) {
 	disableRemoteMethods(Model, [
-		'__create__',
-		'__updateById__',
-		'__destroyById__',
-		'__delete__',
-		'__count__',
-		'__findById__',
-		'__link__',
-		'__unlink__',
-		'__exists__',
-	].map(m => m + relation), false);
+		'prototype.__create__',
+		'prototype.__updateById__',
+		'prototype.__destroyById__',
+		'prototype.__delete__',
+		'prototype.__count__',
+		'prototype.__findById__',
+		'prototype.__link__',
+		'prototype.__unlink__',
+		'prototype.__exists__',
+	].map(m => m + relation));
 }
 /**
  * Hides the given relation from the Model remote methods.
@@ -120,19 +117,19 @@ function readOnlyRelation(Model, relation) {
  */
 function hideRelation(Model, relation) {
 	disableRemoteMethods(Model, [
-		'__create__',
-		'__get__',
-		'__update__',
-		'__destroy__',
-		'__delete__',
-		'__updateById__',
-		'__destroyById__',
-		'__count__',
-		'__findById__',
-		'__link__',
-		'__unlink__',
-		'__exists__',
-	].map(m => m + relation), false);
+		'prototype.__create__',
+		'prototype.__get__',
+		'prototype.__update__',
+		'prototype.__destroy__',
+		'prototype.__delete__',
+		'prototype.__updateById__',
+		'prototype.__destroyById__',
+		'prototype.__count__',
+		'prototype.__findById__',
+		'prototype.__link__',
+		'prototype.__unlink__',
+		'prototype.__exists__',
+	].map(m => m + relation));
 }
 /**
  * Begins a transaction for the given model.
