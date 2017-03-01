@@ -1,0 +1,54 @@
+{
+  "name": "loopback-utils",
+  "version": "0.1.0",
+  "description": "Loopback utilities",
+  "main": "./src/index.js",
+  "jsnext:main": "./src/index.js",
+  "scripts": {
+    "lint": "eslint src test",
+    "test": "npm run lint && nyc mocha test/**/*.test.js",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/taoyuan/loopback-utils"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Yuan Tao",
+    "email": "towyuan@outlook.com",
+    "website": ""
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/taoyuan/loopback-utils/issues"
+  },
+  "homepage": "https://github.com/taoyuan/loopback-utils#readme",
+  "dependencies": {
+    "bluebird": "^3.4.7"
+  },
+  "optionalDependencies": {
+    "debug": "^2.6.1"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "coveralls": "^2.11.16",
+    "eslint": "^3.15.0",
+    "eslint-config-airbnb": "^14.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-mocha": "^4.8.0",
+    "eslint-plugin-react": "^6.9.0",
+    "mocha": "^3.2.0",
+    "nyc": "^10.1.2",
+    "sinon": "^1.17.7",
+    "sinon-chai": "^2.8.0",
+    "xo": "^0.17.1"
+  },
+  "nyc": {
+    "reporter": [
+      "lcov",
+      "text"
+    ]
+  }
+}
