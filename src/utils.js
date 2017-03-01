@@ -43,7 +43,6 @@ function createPromiseCallback() {
 }
 
 function filter(sources, rules) {
-	rules = Array.isArray(rules) ? rules : [rules];
 	let remained = [...sources];
 
 	_.map(rules, (approve, pattern) => {
