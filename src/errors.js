@@ -1,6 +1,7 @@
 'use strict';
 
 const _ = require('lodash');
+const util = require('util');
 const errs = require('errs');
 
 exports.modelNotFound = function (model, where) {
@@ -10,7 +11,7 @@ exports.modelNotFound = function (model, where) {
 		code: 'MODEL_NOT_FOUND',
 		status: 404,
 		statusCode: 404,
-		message: `Unknown "${model}" with ${where}.`
+		message: `Unknown "${model}" for ${util.inspect(where)}.`
 	});
 };
 
