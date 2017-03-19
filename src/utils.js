@@ -203,6 +203,57 @@ function beginTransaction(Model, callback) {
 	return callback.promise;
 }
 
+function param(req, names) {
+	if (typeof names === 'string') {
+		names = [names];
+	}
+	let options = names;
+	if (Array.isArray(options)) {
+		options = {
+			params: options,
+			headers: options,
+			cookies: options,
+		}
+	}
+
+	const params = options.params || [];
+	const headers = options.headers || [];
+	const cookies = options.cookies || [];
+	let i = 0;
+	let length;
+	let value;
+
+	for (length = params.length; i < length; i++) {
+		const param = params[i];
+		// replacement for deprecated req.param()
+		value = req.params && req.params[param] !== undefined ? req.params[param] :
+			req.body && req.body[param] !== undefined ? req.body[param] :
+				req.query && req.query[param] !== undefined ? req.query[param] :
+					undefined;
+
+		if (value) {
+			return value;
+		}
+	}
+
+	for (i = 0, length = headers.length; i < length; i++) {
+		value = req.header(headers[i]);
+		if (value) {
+			return value;
+		}
+	}
+
+	if (req.signedCookies) {
+		for (i = 0, length = cookies.length; i < length; i++) {
+			value = req.signedCookies[cookies[i]];
+			if (value) {
+				return value;
+			}
+		}
+	}
+	return null;
+}
+
 module.exports = {
 	noop,
 	createPromiseCallback,
@@ -213,5 +264,6 @@ module.exports = {
 	readOnly,
 	simpleCrud,
 	readOnlyRelation,
-	beginTransaction
+	beginTransaction,
+	param
 };
