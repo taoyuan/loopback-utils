@@ -1,6 +1,6 @@
 {
   "name": "loopback-utils",
-  "version": "0.4.3",
+  "version": "0.5.0",
   "description": "Loopback utilities",
   "main": "./src/index.js",
   "jsnext:main": "./src/index.js",
@@ -25,28 +25,28 @@
   },
   "homepage": "https://github.com/taoyuan/loopback-utils#readme",
   "dependencies": {
-    "bluebird": "^3.4.7",
+    "bluebird": "^3.5.0",
     "errs": "^0.3.2",
     "lodash": "^4.17.4",
-    "minimatch": "^3.0.3"
+    "minimatch": "^3.0.4"
   },
   "optionalDependencies": {
-    "debug": "^2.6.1"
+    "debug": "^3.0.1"
   },
   "devDependencies": {
-    "chai": "^3.5.0",
-    "coveralls": "^2.11.16",
-    "eslint": "^3.15.0",
-    "eslint-config-airbnb": "^14.0.0",
-    "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-jsx-a11y": "^4.0.0",
-    "eslint-plugin-mocha": "^4.8.0",
-    "eslint-plugin-react": "^6.9.0",
-    "mocha": "^3.2.0",
-    "nyc": "^10.1.2",
-    "sinon": "^1.17.7",
-    "sinon-chai": "^2.8.0",
-    "xo": "^0.17.1"
+    "chai": "^4.1.1",
+    "coveralls": "^2.13.1",
+    "eslint": "^4.5.0",
+    "eslint-config-airbnb": "^15.1.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-mocha": "^4.11.0",
+    "eslint-plugin-react": "^7.3.0",
+    "mocha": "^3.5.0",
+    "nyc": "^11.1.0",
+    "sinon": "^3.2.1",
+    "sinon-chai": "^2.13.0",
+    "xo": "^0.18.2"
   },
   "nyc": {
     "reporter": [
