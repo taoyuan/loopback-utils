@@ -31,22 +31,22 @@
     "minimatch": "^3.0.4"
   },
   "optionalDependencies": {
-    "debug": "^3.0.1"
+    "debug": "^4.1.1"
   },
   "devDependencies": {
     "chai": "^4.1.1",
-    "coveralls": "^2.13.1",
-    "eslint": "^4.5.0",
-    "eslint-config-airbnb": "^15.1.0",
+    "coveralls": "^3.0.6",
+    "eslint": "^6.3.0",
+    "eslint-config-airbnb": "^18.0.1",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
-    "eslint-plugin-mocha": "^4.11.0",
+    "eslint-plugin-mocha": "^6.1.0",
     "eslint-plugin-react": "^7.3.0",
-    "mocha": "^3.5.0",
-    "nyc": "^11.1.0",
-    "sinon": "^3.2.1",
-    "sinon-chai": "^2.13.0",
-    "xo": "^0.18.2"
+    "mocha": "^6.2.0",
+    "nyc": "^14.1.1",
+    "sinon": "^7.4.2",
+    "sinon-chai": "^3.3.0",
+    "xo": "^0.24.0"
   },
   "nyc": {
     "reporter": [
