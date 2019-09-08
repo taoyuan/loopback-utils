@@ -3,7 +3,7 @@
 [![NPM version](http://img.shields.io/npm/v/loopback-utils.svg?style=flat-square)](https://www.npmjs.com/package/loopback-utils)
 [![NPM downloads](http://img.shields.io/npm/dm/loopback-utils.svg?style=flat-square)](https://www.npmjs.com/package/loopback-utils)
 [![Build Status](http://img.shields.io/travis/taoyuan/loopback-utils/master.svg?style=flat-square)](https://travis-ci.org/taoyuan/loopback-utils)
-[![Coverage Status](https://img.shields.io/coveralls/taoyuan/loopback-utils.svg?style=flat-square)](https://coveralls.io/taoyuan/loopback-utils)
+[![Coverage Status](https://img.shields.io/coveralls/taoyuan/loopback-utils.svg?style=flat-square)](https://coveralls.io/taoyuan/loopback-utils) [![Greenkeeper badge](https://badges.greenkeeper.io/taoyuan/loopback-utils.svg)](https://greenkeeper.io/)
 
 > Loopback utilities
 
